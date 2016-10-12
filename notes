@@ -25,3 +25,56 @@ return list of bike information per bike
   -color
   -thumb
   -date stolen
+
+//place and location id
+  http://stackoverflow.com/questions/24577888/google-maps-places-api-get-a-locations-place-id-on-user-click
+
+//lat long click event
+http://stackoverflow.com/questions/9247006/get-latitude-and-longitude-on-click-event-from-google-map
+
+For clicking on a map
+https://developers.google.com/maps/documentation/javascript/3.exp/reference - MouseEvent object specification
+
+
+https://developers.google.com/maps/documentation/javascript/3.exp/reference#LatLng
+
+//////////////////////
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="build/css/vendor.css">
+    <link rel="stylesheet" href="build/css/styles.css">
+    <script src="build/js/vendor.min.js"></script>
+    <script type="text/javascript" src="build/js/app.js"></script>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <title>Bike Tracker</title>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script>
+      var map;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 45.520622, lng: -122.677492},
+          zoom:10
+        });
+      }
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDACEz2FVBQclbyC7BSJ5lzgDnY2aQjeAQ&callback=initMap"
+    async defer></script>
+    <div class="container">
+
+        <input type="text" name="bike" id="bike" >
+        <button type="submit" id="city" class="btn btn-primary" name="button">Submit Bike</button>
+
+
+      <div id="display">
+
+      </div>
+    </div>
+
+
+  </body>
+</html>

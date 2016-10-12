@@ -2,7 +2,7 @@ var apiKey = require("./../.env").apiKey;
 
 var BikeTracker = function(){
 
-}
+};
 
 
 BikeTracker.prototype.findAll = function (city ,displayColor) {
@@ -15,7 +15,9 @@ BikeTracker.prototype.findAll = function (city ,displayColor) {
   }).fail(function(error){
     $('#display').text(error.responseJSON.message);
   });
-}
+};
 
 
 exports.bikeTrackerModule = BikeTracker;
+
+//timestamp methods

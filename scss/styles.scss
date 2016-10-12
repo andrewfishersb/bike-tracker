@@ -1,3 +1,15 @@
 img[src='null']{
   display: none;
 }
+
+html, body {
+  height: 100%;
+
+}
+#map {
+  float: right;
+  height: 50%;
+  width: 50%;
+  margin: 10px 10px 0px 0px;
+
+}

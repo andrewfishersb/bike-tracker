@@ -4,19 +4,19 @@
     <link rel="stylesheet" href="build/css/vendor.css">
     <link rel="stylesheet" href="build/css/styles.css">
     <script src="build/js/vendor.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDACEz2FVBQclbyC7BSJ5lzgDnY2aQjeAQ&callback=initMap" async defer></script>
+
     <script type="text/javascript" src="build/js/app.js"></script>
+    <meta name="viewport" content="initial-scale=1.0">
     <meta charset="utf-8">
     <title>Bike Tracker</title>
   </head>
   <body>
+    <div id="map"></div>
     <div class="container">
-
         <input type="text" name="bike" id="bike" >
         <button type="submit" id="city" class="btn btn-primary" name="button">Submit Bike</button>
-
-
       <div id="display">
-
       </div>
     </div>
   </body>

@@ -6,7 +6,7 @@ var apiKey = require("./../.env").apiKey;
 
 var BikeTracker = function(){
 
-}
+};
 
 
 BikeTracker.prototype.findAll = function (city ,displayColor) {
@@ -19,23 +19,57 @@ BikeTracker.prototype.findAll = function (city ,displayColor) {
   }).fail(function(error){
     $('#display').text(error.responseJSON.message);
   });
-}
+};
 
 
 exports.bikeTrackerModule = BikeTracker;
 
+//timestamp methods
+
 },{"./../.env":1}],3:[function(require,module,exports){
+
+
+var BikeMap = function(){
+
+};
+var map;
+BikeMap.prototype.initMap = function (latt,long) {
+  map = new google.maps.Map(document.getElementById('map'),
+    {
+      center: {lat: latt, lng: long},
+      zoom:10
+    });
+  };
+
+
+exports.bikeMapModule = BikeMap;
+
+},{}],4:[function(require,module,exports){
 var BikeTracker = require("./../js/bike-tracker.js").bikeTrackerModule;
+var BikeMap = require("./../js/geo.js").bikeMapModule;
 
 var displayColor = function(city, bikeData){
   for (var i = 0; i < bikeData.length; i++) {
-    $("#display").append("<h3>the bike in " + city + " is " + bikeData[i].title +"</h3>" + "<img src='"+ bikeData[i].thumb+"'>" + "<ul><li>" + bikeData[i].frame_colors+"</li>"
-    + "<li>" +bikeData[i].stolen_location+"</li>" + "<li>" + bikeData[i].date_stolen+"</li></ul>");
+    $("#display").append("<h3>the bike in " + city + " is " + bikeData[i].title +"</h3>" + "<img src='"+ bikeData[i].thumb+"' >" + "<ul><li>" + bikeData[i].frame_colors+"</li>" + "<li>" +bikeData[i].stolen_location+"</li>" + "<li>" + new Date(bikeData[i].date_stolen*1000)+"</li></ul>");
   }
-  // $("#display").append("<p>the bike in " + city + " is " + bikeData +"</p>")
 };
 
+
 $(document).ready(function(){
+  var newMap = new BikeMap();
+  $.get('https://maps.googleapis.com/maps/api/geocode/json?address=portland,+or&key=AIzaSyDACEz2FVBQclbyC7BSJ5lzgDnY2aQjeAQ').then(function(response) {
+ console.log(response);
+ newMap.initMap(45.52, -122.677);
+ }).then( function() {
+   //outside of this google wasnt recognized
+   google.maps.event.addListener(map,"click",function(event){
+      lat = event.latLng.lat();
+     console.log(lat);
+      long = event.latLng.lng();
+     console.log(lng);
+   });
+ });
+
   $("#city").click(function(){
     var city = $("#bike").val();
     var newBike = new BikeTracker();
@@ -44,4 +78,4 @@ $(document).ready(function(){
   });
 });
 
-},{"./../js/bike-tracker.js":2}]},{},[3]);
+},{"./../js/bike-tracker.js":2,"./../js/geo.js":3}]},{},[4]);
