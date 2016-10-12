@@ -14,3 +14,14 @@ urn:ietf:wg:oauth:2.0:oob
 
 authorization code
 118705c72a4a87c1ec6f49a4672c24dca1fdf73a9ddca7c6f8572149ebc998f0
+
+
+missing bikes in portland in city
+return list of bike information per bike
+  -title
+  -manufac
+  -frame-model
+  -year?
+  -color
+  -thumb
+  -date stolen
