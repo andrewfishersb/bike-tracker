@@ -1,15 +1,64 @@
 img[src='null']{
-  display: none;
+  content:url(http://cdn.graphicsfactory.com/clip-art/image_files/image/6/1359996-cartoon-children_046.jpg);
 }
+h4,li{
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+input{
+  margin-bottom: 2%;
+  max-width:40%;
 
+}
 html, body {
   height: 100%;
-
+}
+input,label,button{
+    margin-left: 2%;
 }
 #map {
   float: right;
   height: 50%;
-  width: 50%;
-  margin: 10px 10px 0px 0px;
+  width: 35%;
+  margin-top: 3%;
+  margin-right: 3%;
+  opacity: .8;
+}
+
+.bike-img img{
+  max-width: 200px;
+  max-height: 200px;
+  margin-left: 40px;
+}
+body{
+  background:url(http://wallpapercave.com/wp/UT1xc4K.jpg) no-repeat fixed ;
+  // cursor: none;
+}
+#bike:hover{
+  cursor:no-drop;
+}
+.bike-cursor:hover{
+  cursor: url(http://www.bikeforums.net/images/smilies/commuter.gif),auto;
+}
+button:hover{
+  cursor:progress;
+}
+li{
+  list-style: none;
+}
+h3{
+  margin-left: 2%;
+}
+
+.bike-info{
+  float: left;
+  padding: 10px;
+}
+#display-row{
+  margin-left: 2%;
+}
+
+.jumbotron{
+  border-radius: 2%;
 
 }

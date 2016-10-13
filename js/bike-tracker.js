@@ -5,13 +5,13 @@ var BikeTracker = function(){
 };
 
 
-BikeTracker.prototype.findAll = function (city ,displayColor) {
+BikeTracker.prototype.findAll = function (city, area, displayInfo) {
   var bikeArray =[];
-  $.get("https://bikeindex.org:443/api/v2/bikes_search/stolen?page=1&proximity="+city).then(function(response){
+  $.get("https://bikeindex.org:443/api/v2/bikes_search/stolen?page=1&proximity="+city+"&proximity_square="+area).then(function(response){
     for(var i =0;i<response.bikes.length;i++){
       bikeArray.push(response.bikes[i]);
     }
-      displayColor(city, bikeArray);
+      displayInfo(city, bikeArray);
    }).fail(function(error){
     $('#display').text(error.responseJSON.message);
   });

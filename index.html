@@ -13,15 +13,45 @@
     <title>Bike Tracker</title>
   </head>
   <body>
-    <div id="map"></div>
-    <div class="container">
-      <form id="city" >
-        <input type="text" name="bike" id="bike" >
-        <button type="submit"  class="btn btn-primary" name="button">Submit Bike</button>
-      </form>
+      <div id="map"></div>
 
+
+
+
+    <div class="row">
+      <div class="col-md-6">
+        <div class="page-header">
+          <div class="instructions" id="instructions"><h3>Click on the map to add coordinates to the submission bar or type in a city. Click the submit button and to see missing bikes in that area.</h3></div>
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+        <div class="container">
+          <form class="form-group" id="city" >
+            <label for="">City or Coordinates</label>
+            <input class="form-control" type="text" name="bike" id="bike" required >
+            <label class="bike-cursor">Square Miles to Search</label>
+            <input type="number" class="form-control bike-cursor" min="0" max="196900000" name="area" id="area">
+            <button type="submit"  class="btn btn-primary" name="button">Submit Bike</button>
+          </form>
+        </div>
+
+      </div>
+
+
+    </div>
+    <div class="row" id="display-row">
       <div id="display">
+
       </div>
     </div>
+
+
+<!-- <div class="row"> -->
+
+  <!-- </div> -->
+
+
   </body>
 </html>

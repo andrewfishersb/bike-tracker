@@ -15,10 +15,11 @@ BikeMap.prototype.initMap = function (latt,long) {
 
 BikeMap.prototype.findCoords = function () {
   map.addListener("click",function(event){
-      lat = event.latLng.lat();
-      long = event.latLng.lng();
-      console.log(lat +" "+long)
-  })
+      var lat = event.latLng.lat();
+      var long = event.latLng.lng();
+      $("#bike").val('');
+      $("#bike").val($("#bike").val()+lat+","+long);
+  });
 };
 
 exports.bikeMapModule = BikeMap;
