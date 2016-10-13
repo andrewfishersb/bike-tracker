@@ -1,9 +1,9 @@
 {
-  "name": "ping-pong",
-  "description": "Ping-Pong Calculator",
+  "name": "bike-tracker",
+  "description": "Track your bike",
   "main": "index.js",
   "license": "ISC",
-  "homepage": "https://github.com/NewkirkS/ping-pong-calculator",
+  "homepage": "https://github.com",
   "ignore": [
     "**/.*",
     "node_modules",

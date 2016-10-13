@@ -16,7 +16,7 @@ BikeTracker.prototype.findAll = function (city ,displayColor) {
       bikeArray.push(response.bikes[i]);
     }
       displayColor(city, bikeArray);
-  }).fail(function(error){
+   }).fail(function(error){
     $('#display').text(error.responseJSON.message);
   });
 };
@@ -34,6 +34,7 @@ var BikeMap = function(){
 };
 var map;
 BikeMap.prototype.initMap = function (latt,long) {
+  $.get('https://maps.googleapis.com/maps/api/geocode/json?address=portland,+or&key=AIzaSyDACEz2FVBQclbyC7BSJ5lzgDnY2aQjeAQ&libraries=geometry,places,drawing,visualization');
   map = new google.maps.Map(document.getElementById('map'),
     {
       center: {lat: latt, lng: long},
@@ -41,6 +42,13 @@ BikeMap.prototype.initMap = function (latt,long) {
     });
   };
 
+BikeMap.prototype.findCoords = function () {
+  map.addListener("click",function(event){
+      lat = event.latLng.lat();
+      long = event.latLng.lng();
+      console.log(lat +" "+long)
+  })
+};
 
 exports.bikeMapModule = BikeMap;
 
@@ -57,20 +65,19 @@ var displayColor = function(city, bikeData){
 
 $(document).ready(function(){
   var newMap = new BikeMap();
-  $.get('https://maps.googleapis.com/maps/api/geocode/json?address=portland,+or&key=AIzaSyDACEz2FVBQclbyC7BSJ5lzgDnY2aQjeAQ').then(function(response) {
- console.log(response);
+  $.get('https://maps.googleapis.com/maps/api/geocode/json?address=portland,+or&key=AIzaSyDACEz2FVBQclbyC7BSJ5lzgDnY2aQjeAQ&libraries=geometry,places,drawing,visualization').then(function(response) {
  newMap.initMap(45.52, -122.677);
- }).then( function() {
-   //outside of this google wasnt recognized
-   google.maps.event.addListener(map,"click",function(event){
-      lat = event.latLng.lat();
-     console.log(lat);
-      long = event.latLng.lng();
-     console.log(lng);
-   });
- });
+ newMap.findCoords();
 
-  $("#city").click(function(){
+ }) .fail(function(error){
+    $('#display').text(error.responseJSON.message);
+    console.log("failed");
+  });
+
+
+  $("#city").submit(function(event){
+    event.preventDefault();
+    $("#display").empty();
     var city = $("#bike").val();
     var newBike = new BikeTracker();
     newBike.findAll(city,displayColor);

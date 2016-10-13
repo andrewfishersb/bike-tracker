@@ -12,7 +12,7 @@ BikeTracker.prototype.findAll = function (city ,displayColor) {
       bikeArray.push(response.bikes[i]);
     }
       displayColor(city, bikeArray);
-  }).fail(function(error){
+   }).fail(function(error){
     $('#display').text(error.responseJSON.message);
   });
 };
