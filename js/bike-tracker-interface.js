@@ -18,11 +18,6 @@ $(document).ready(function(){
     console.log("failed");
   });
 
-  // $("#map").click(function(event) {
-  //   console.log(newMap.findCoords());
-  //   $("#bike").append(newMap.findCoords());
-  //   console.log(newMap.findCoords());
-  // });
 
 
   $("#city").submit(function(event){
